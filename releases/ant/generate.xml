@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project NuovoLauncher with Jar-in-Jar Loader">
+    <!--this file was created by Eclipse Runnable JAR file Export Wizard-->
+    <!--ANT 1.7 is required-->
+    <!--define folder properties-->
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="/home/connor/eclipse-workspace"/>
+    <property name="dir.jarfile" value="/home/connor/Desktop/Development/NuovoLauncher/releases"/>
+    <target name="create_run_jar">
+        <jar destfile="${dir.jarfile}/NuovoLauncher.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="com.nl.gui.NuovoLauncher"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./ commons-io-1.3.2.jar json-simple-1.1.1.jar jsoup-1.13.1.jar javafx.base.jar javafx.controls.jar javafx.fxml.jar javafx.graphics.jar javafx.media.jar javafx.swing.jar javafx.web.jar javafx-swt.jar mysql-connector-java-8.0.22.jar com.fasterxml.jackson.databind-2.10.3.LIFERAY-PATCHED-1.jar"/>
+            </manifest>
+            <zipfileset src="jar-in-jar-loader.zip"/>
+            <fileset dir="/home/connor/Desktop/Development/NuovoLauncher/bin"/>
+            <zipfileset dir="/home/connor/Desktop/Development/NuovoLauncher - Java Edition/libs" includes="commons-io-1.3.2.jar"/>
+            <zipfileset dir="/home/connor/Desktop/Development/NuovoLauncher - Java Edition/libs" includes="json-simple-1.1.1.jar"/>
+            <zipfileset dir="/home/connor/Desktop/Development/NuovoLauncher - Java Edition/libs" includes="jsoup-1.13.1.jar"/>
+            <zipfileset dir="/home/connor/Desktop/Development/Libraries/JavaFX/javafx-sdk-11.0.2/lib" includes="javafx.base.jar"/>
+            <zipfileset dir="/home/connor/Desktop/Development/Libraries/JavaFX/javafx-sdk-11.0.2/lib" includes="javafx.controls.jar"/>
+            <zipfileset dir="/home/connor/Desktop/Development/Libraries/JavaFX/javafx-sdk-11.0.2/lib" includes="javafx.fxml.jar"/>
+            <zipfileset dir="/home/connor/Desktop/Development/Libraries/JavaFX/javafx-sdk-11.0.2/lib" includes="javafx.graphics.jar"/>
+            <zipfileset dir="/home/connor/Desktop/Development/Libraries/JavaFX/javafx-sdk-11.0.2/lib" includes="javafx.media.jar"/>
+            <zipfileset dir="/home/connor/Desktop/Development/Libraries/JavaFX/javafx-sdk-11.0.2/lib" includes="javafx.swing.jar"/>
+            <zipfileset dir="/home/connor/Desktop/Development/Libraries/JavaFX/javafx-sdk-11.0.2/lib" includes="javafx.web.jar"/>
+            <zipfileset dir="/home/connor/Desktop/Development/Libraries/JavaFX/javafx-sdk-11.0.2/lib" includes="javafx-swt.jar"/>
+            <zipfileset dir="/usr/share/java" includes="mysql-connector-java-8.0.22.jar"/>
+            <zipfileset dir="/home/connor/Desktop/Development/Libraries" includes="com.fasterxml.jackson.databind-2.10.3.LIFERAY-PATCHED-1.jar"/>
+        </jar>
+    </target>
+</project>
