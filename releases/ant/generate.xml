@@ -3,11 +3,15 @@
     <!--this file was created by Eclipse Runnable JAR file Export Wizard-->
     <!--ANT 1.7 is required-->
     <!--define folder properties-->
+    <tstamp>
+        <format property="TODAY" pattern="yyyy-MM-dd"/>
+    </tstamp>    
+
     <property name="dir.buildfile" value="."/>
     <property name="dir.workspace" value="/home/connor/eclipse-workspace"/>
     <property name="dir.jarfile" value="/home/connor/Desktop/Development/NuovoLauncher/releases"/>
     <target name="create_run_jar">
-        <jar destfile="${dir.jarfile}/NuovoLauncher.jar">
+        <jar destfile="${dir.jarfile}/NuovoLauncher-${TODAY}.jar">
             <manifest>
                 <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
                 <attribute name="Rsrc-Main-Class" value="com.nl.gui.NuovoLauncher"/>
