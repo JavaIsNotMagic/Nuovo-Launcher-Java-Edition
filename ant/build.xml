@@ -99,9 +99,8 @@
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
     <target name="package-jar" depends="build">
-        <jar destfile="${basedir}/releases/NuovoLauncher-${TODAY}-stable.jar" >
+        <jar manifest="${basedir}/manifests/MANIFEST.MF" destfile="${basedir}/releases/NuovoLauncher-${TODAY}-stable.jar" >
             <fileset dir="${basedir}/bin" includes="**/*.class" />
-            <fileset dir="${basedir}/manifests" includes="**/*.mf" />
 		</jar>
 	</target>    
     <target name="NuovoLauncher - GUI">
