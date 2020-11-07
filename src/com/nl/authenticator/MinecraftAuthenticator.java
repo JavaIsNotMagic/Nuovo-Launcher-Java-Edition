@@ -14,6 +14,8 @@ import java.util.Base64;
 public class MinecraftAuthenticator {
 	@SuppressWarnings("all")
 	public static String Authenticate(String username, String password) throws IOException, InterruptedException, ParseException {
+		//Format the JSON request
+		
 		JSONObject agent_object = new JSONObject();
 		JSONObject request_object = new JSONObject();
 		String mc_user = "";
@@ -26,9 +28,8 @@ public class MinecraftAuthenticator {
 		request_object.put("password", password);
 		
 		String json_request = request_object.toJSONString();
-		//DEBUG Print JSON Request
-		//System.out.println(json_request);
 		
+		//Write it to disk
 		String response = AutenticationHandler.runner(json_request);
 		PrintWriter pw = new PrintWriter(System.getProperty("user.dir") + "/.nuovo/auth_response.json");
 		pw.write(response);
@@ -36,14 +37,19 @@ public class MinecraftAuthenticator {
 		pw.close();
 		
 		try { 
+			//Decode the response from the auth server
 			Object response_object = new JSONParser().parse(new FileReader(System.getProperty("user.dir") + "/.nuovo/auth_response.json"));
 			JSONObject response_json = (JSONObject) response_object;
+			//Get the username of the player
 			JSONObject mc_username = (JSONObject) response_json.get("selectedProfile");
 			mc_user = mc_username.get("name").toString();
+			//Get and decode the accessToken from the response
 			String accessObject = response_json.get("accessToken").toString();
-			String clientToken = response_json.get("clientToken").toString();
 			accessObject = accessObject.replace(".", "\n").replace("_", "\n");
 			String accessObjectString = accessObject.split("\n")[1];
+			
+			//Get the clientToken
+			String clientToken = response_json.get("clientToken").toString();
 			
 			//accessObjectString is a Base64 encoded string, so now we need to decode it
 			byte[] decodedBytes = Base64.getDecoder().decode(accessObjectString.getBytes("UTF-8"));
@@ -55,10 +61,12 @@ public class MinecraftAuthenticator {
 			accessTokenObjectWriter.flush();
 			accessTokenObjectWriter.close();
 			
+			//Actually save the accessToken
 			Object auth_object = new JSONParser().parse(new FileReader(System.getProperty("user.dir") + "/.nuovo/auth_token.json"));
 			JSONObject auth_jo = (JSONObject) auth_object;
 			String accessToken = auth_jo.get("yggt").toString();
 			
+			//Prepare to write, then write the user cache (last logged in user only)
 			JSONObject dataObject = new JSONObject();
 			dataObject.put("username", mc_user);
 			dataObject.put("clientToken", clientToken);

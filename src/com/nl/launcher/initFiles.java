@@ -194,11 +194,19 @@ public class initFiles {
             
             if(arr[index].isFile()) { 
                 //System.out.println(arr[index].getAbsolutePath());
-                String path = new String(arr[index].getAbsolutePath() + path_sep);
-                FileWriter tfw = new FileWriter(new File(file), true);
-                tfw.append(path);
-                tfw.flush();
-                tfw.close();
+                if(new String(arr[index].getAbsolutePath()).contains("client-")) {
+                	 String path = new String(arr[index].getAbsolutePath());
+                	 FileWriter tfw = new FileWriter(new File(file), true);
+                     tfw.append(path);
+                     tfw.flush();
+                     tfw.close();
+                } else {
+                	String path = new String(arr[index].getAbsolutePath() + path_sep);
+                    FileWriter tfw = new FileWriter(new File(file), true);
+                    tfw.append(path);
+                    tfw.flush();
+                    tfw.close();
+                }
 
             // for sub-directories 
             } else if(arr[index].isDirectory()) { 

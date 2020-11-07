@@ -2,6 +2,7 @@ package com.nl.launcher;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -228,6 +229,8 @@ public class Launcher {
         //Now launch minecraft
         File[] search_dir = lib_dir.listFiles();
         initFiles.RecursivePrint(search_dir, 0, 0, classpath);
+        File[] client_dir = versions_dir.listFiles();
+        initFiles.RecursivePrint(client_dir, 0, 0, classpath);
         String ver = new String("1.7.10");
         System.out.println("Starting Minecraft " + ver);
         LauncherMain.Launch(ver, game_dir.toString(), assets_dir.toString(), versions_dir.toString() + "/" + "client-" + ver + ".jar", classpath);  
@@ -259,6 +262,11 @@ public class Launcher {
          //Now launch minecraft
          File[] search_dir = lib_dir.listFiles();
          initFiles.RecursivePrint(search_dir, 0, 0, classpath);
+         
+         FilenameFilter filter = (dir,name) -> name.contains(args[0]);
+         File[] hello = versions_dir.listFiles(filter);
+         initFiles.RecursivePrint(hello, 0, 0, classpath);
+         
          String ver = new String(args[0]);
          System.out.println("Starting Minecraft " + ver);
          LauncherMain.LaunchWithTokens(args[4], args[2], args[3], ver, game_dir.toString(), assets_dir.toString(), versions_dir.toString() + "/" + "client-" + ver + ".jar", classpath); 
