@@ -1,19 +1,38 @@
 package com.nl.authenticator;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+
+
+
 
 public class AutenticationHandler {
 	public static String runner(String requestBody) throws IOException, InterruptedException {
-		HttpClient client = HttpClient.newHttpClient();
-		HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://authserver.mojang.com/authenticate")).POST(HttpRequest.BodyPublishers.ofString(requestBody)).build();
+		URL url = new URL("https://authserver.mojang.com/authenticate");
+		URLConnection con = url.openConnection();
+		HttpURLConnection http = (HttpURLConnection) con;
+		http.setRequestMethod("POST");
+		http.setDoOutput(true);
+		byte[] request = requestBody.getBytes();
+		int length = request.length;
 		
-		HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+		http.setFixedLengthStreamingMode(length);
+		http.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+		http.connect();
+		try(OutputStream os = http.getOutputStream()) {
+			os.write(request);
+		}
+		InputStream out = http.getInputStream();
+		byte[] b = {};
+		int off = 0;
+		out.read(b, off, length);
+		return b.toString();
 		
-		return response.body().toString();
+		
 	}
 
 }

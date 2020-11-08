@@ -35,14 +35,14 @@ public class LauncherMain {
             throws IOException, InterruptedException {
         String os_name = System.getProperty("os.name").toLowerCase();
         String natives_path = System.getProperty("user.dir") + "/.nuovo/minecraft/natives/" + os_name;
-        File classpath = new File(path);
-        //PrintWriter pw = new PrintWriter(System.getProperty("user.dir") + "/bin/classpath.txt");
-        String uuid = (String) UUID.randomUUID().toString();
+        File classpath = new File(path).getAbsoluteFile();
+        String cp = FileUtils.readFileToString(classpath);
+        cp = cp.replace("\n", "").replace("\r", "");
         String empty = "{}";
         
         //Issue #0001: java.io.IOException: error=7, Argument list too long.
         //Fix: Write the command to a file, then execute 
-        String command = "java -Djava.library.path=" + natives_path + " -cp @" + classpath + " net.minecraft.client.main.Main" + " --username " + username + " --version " + version + " --gameDir " + game_direcotry + " --assetsDir " + assets_root + " --assetIndex " + version + " --uuid " + ct + " --accessToken " + at + " --userProperties " + empty + " --userType legacy";
+        String command = "java -Djava.library.path=" + natives_path + " -cp " + cp + " net.minecraft.client.main.Main" + " --username " + username + " --version " + version + " --gameDir " + game_direcotry + " --assetsDir " + assets_root + " --assetIndex " + version + " --uuid " + ct + " --accessToken " + at + " --userProperties " + empty + " --userType legacy";
         File command_file = new File(System.getProperty("user.dir") + "/bin/launch");
         //Set the execute permissions, and allow anyone to execute
         command_file.setExecutable(true, false);
@@ -53,6 +53,7 @@ public class LauncherMain {
         pw1.close();
         
         //Execute
+        System.out.println("Command to execute: " + command);
         Process process = Runtime.getRuntime().exec(System.getProperty("user.dir") + "/bin/launch");
         StreamGobbler sg = new StreamGobbler(process.getInputStream(), System.out::println);
         Executors.newSingleThreadExecutor().submit(sg);

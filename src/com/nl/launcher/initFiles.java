@@ -50,6 +50,17 @@ public class initFiles {
         }
 
     }
+    public static void create_file(File file_path) throws IOException {
+        if (file_path.exists()) {
+            // System.out.println("File " + file_path + " exists");
+        } else {
+            FileWriter tfw = new FileWriter(file_path);
+            tfw.write(" ");
+            tfw.flush();
+            tfw.close();
+        }
+
+    }
 
     public static void download(URL url, String file_path) throws IOException {
         File temp = new File(file_path);
@@ -63,9 +74,9 @@ public class initFiles {
         }
     }
 
-    public static void createDirectories(List paths) {
+    public static void createDirectories(List paths, String version) {
         final String current_dir = System.getProperty("user.dir");
-        File lib_root = new File(current_dir + "/.nuovo/minecraft/libs");
+        File lib_root = new File(current_dir + "/.nuovo/minecraft/libs/" + version);
         Iterator paths_it = paths.iterator();
 
         while (paths_it.hasNext()) {

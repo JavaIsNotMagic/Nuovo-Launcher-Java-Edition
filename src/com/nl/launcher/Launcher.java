@@ -33,6 +33,16 @@ public class Launcher {
     static final String classpath = new String(current_dir + "/.nuovo/minecraft/classpath.txt");
     static final String resource_base = "http://resources.download.minecraft.net/";
 
+    public static void create_folders() {
+    	root.mkdir();
+        game_dir.mkdir();
+        assets_dir.mkdir();
+        index_dir.mkdir();
+        object_dir.mkdir();
+        versions_dir.mkdir();
+        lib_dir.mkdir();
+        natives_dir.mkdir();
+    }
     public static List setup() throws IOException, MalformedURLException, ParseException {
 
         final URL version_manifest_url = new URL("https://launchermeta.mojang.com/mc/game/version_manifest.json");
@@ -124,9 +134,9 @@ public class Launcher {
                 String url = artifact.get("url").toString();
                 version_paths.add(path);
                 //Make all the directories needed
-                initFiles.createDirectories(version_paths);
+                initFiles.createDirectories(version_paths, version);
                 //Download the libraries
-                String full_path = new File(lib_dir + "/" + path).toString();
+                String full_path = new File(lib_dir + "/" + version + "/" + path).toString();
                 initFiles.download(new URL(url), full_path);
                 //Download the objects definition
                 initFiles.download(new URL(object_url), object_path);

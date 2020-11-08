@@ -1,80 +1,84 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project basedir=".." default="build" name="NuovoLauncher">
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="NuovoLauncher">
+    <tstamp>
+        <format property="TODAY" pattern="MMMM-dd-yyyy-hh-mm" locale="en,US"/>
+    </tstamp>    
     <property environment="env"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
-    <tstamp>
-        <format property="TODAY" pattern="dd-MM-yyyy"/>
-    </tstamp>
     <path id="NuovoLauncher.classpath">
         <pathelement location="bin"/>
-        <pathelement location="libs/com.fasterxml.jackson.databind-2.10.3.LIFERAY-PATCHED-1.jar"/>
-        <pathelement location="libs/commons-io-1.3.2.jar"/>
-        <pathelement location="libs/javafx.base.jar"/>
-        <pathelement location="libs/javafx.controls.jar"/>
-        <pathelement location="libs/javafx.fxml.jar"/>
-        <pathelement location="libs/javafx.graphics.jar"/>
-        <pathelement location="libs/javafx.media.jar"/>
-        <pathelement location="libs/javafx.swing.jar"/>
-        <pathelement location="libs/javafx.web.jar"/>
-        <pathelement location="libs/javafx-swt.jar"/>
-        <pathelement location="libs/json-simple-1.1.1.jar"/>
-        <pathelement location="libs/jsoup-1.13.1.jar"/>
-        <pathelement location="libs/mysql-connector-java-8.0.22.jar"/>
+        <pathelement location="../libs/com.fasterxml.jackson.databind-2.10.3.LIFERAY-PATCHED-1.jar"/>
+        <pathelement location="../libs/commons-io-2.8.0.jar"/>
+        <pathelement location="../libs/javafx.base.jar"/>
+        <pathelement location="../libs/javafx.controls.jar"/>
+        <pathelement location="../libs/javafx.fxml.jar"/>
+        <pathelement location="../libs/javafx.graphics.jar"/>
+        <pathelement location="../libs/javafx.media.jar"/>
+        <pathelement location="../libs/javafx.swing.jar"/>
+        <pathelement location="../libs/javafx.web.jar"/>
+        <pathelement location="../libs/javafx-swt.jar"/>
+        <pathelement location="../libs/json-simple-1.1.1.jar"/>
+        <pathelement location="../libs/jsoup-1.13.1.jar"/>
+        <pathelement location="../libs/mysql-connector-java-8.0.22.jar"/>
     </path>
     <path id="run.NuovoLauncher - GUI.classpath">
         <path refid="NuovoLauncher.classpath"/>
-        <pathelement location="libs/com.fasterxml.jackson.databind-2.10.3.LIFERAY-PATCHED-1.jar"/>
-        <pathelement location="libs/commons-io-1.3.2.jar"/>
-        <pathelement location="libs/javafx.base.jar"/>
-        <pathelement location="libs/javafx.controls.jar"/>
-        <pathelement location="libs/javafx.fxml.jar"/>
-        <pathelement location="libs/javafx.graphics.jar"/>
-        <pathelement location="libs/javafx.media.jar"/>
-        <pathelement location="libs/javafx.swing.jar"/>
-        <pathelement location="libs/javafx.web.jar"/>
-        <pathelement location="libs/javafx-swt.jar"/>
-        <pathelement location="libs/json-simple-1.1.1.jar"/>
-        <pathelement location="libs/jsoup-1.13.1.jar"/>
-        <pathelement location="libs/mysql-connector-java-8.0.22.jar"/>
+        <pathelement location="../libs/com.fasterxml.jackson.databind-2.10.3.LIFERAY-PATCHED-1.jar"/>
+        <pathelement location="../libs/commons-io-2.8.0.jar"/>
+        <pathelement location="../libs/javafx.base.jar"/>
+        <pathelement location="../libs/javafx.controls.jar"/>
+        <pathelement location="../libs/javafx.fxml.jar"/>
+        <pathelement location="../libs/javafx.graphics.jar"/>
+        <pathelement location="../libs/javafx.media.jar"/>
+        <pathelement location="../libs/javafx.swing.jar"/>
+        <pathelement location="../libs/javafx.web.jar"/>
+        <pathelement location="../libs/javafx-swt.jar"/>
+        <pathelement location="../libs/json-simple-1.1.1.jar"/>
+        <pathelement location="../libs/jsoup-1.13.1.jar"/>
+        <pathelement location="../libs/mysql-connector-java-8.0.22.jar"/>
     </path>
-    <path id="run.Backend Test.classpath">
+    <path id="run.Launcher.classpath">
         <path refid="NuovoLauncher.classpath"/>
-        <pathelement location="libs/com.fasterxml.jackson.databind-2.10.3.LIFERAY-PATCHED-1.jar"/>
-        <pathelement location="libs/commons-io-1.3.2.jar"/>
-        <pathelement location="libs/javafx.base.jar"/>
-        <pathelement location="libs/javafx.controls.jar"/>
-        <pathelement location="libs/javafx.fxml.jar"/>
-        <pathelement location="libs/javafx.graphics.jar"/>
-        <pathelement location="libs/javafx.media.jar"/>
-        <pathelement location="libs/javafx.swing.jar"/>
-        <pathelement location="libs/javafx.web.jar"/>
-        <pathelement location="libs/javafx-swt.jar"/>
-        <pathelement location="libs/json-simple-1.1.1.jar"/>
-        <pathelement location="libs/jsoup-1.13.1.jar"/>
-        <pathelement location="libs/mysql-connector-java-8.0.22.jar"/>
+        <pathelement location="../libs/com.fasterxml.jackson.databind-2.10.3.LIFERAY-PATCHED-1.jar"/>
+        <pathelement location="../libs/commons-io-2.8.0.jar"/>
+        <pathelement location="../libs/javafx.base.jar"/>
+        <pathelement location="../libs/javafx.controls.jar"/>
+        <pathelement location="../libs/javafx.fxml.jar"/>
+        <pathelement location="../libs/javafx.graphics.jar"/>
+        <pathelement location="../libs/javafx.media.jar"/>
+        <pathelement location="../libs/javafx.swing.jar"/>
+        <pathelement location="../libs/javafx.web.jar"/>
+        <pathelement location="../libs/javafx-swt.jar"/>
+        <pathelement location="../libs/json-simple-1.1.1.jar"/>
+        <pathelement location="../libs/jsoup-1.13.1.jar"/>
+        <pathelement location="../libs/mysql-connector-java-8.0.22.jar"/>
     </path>
     <path id="run.Nuovo Launcher - Minecraft Authentication.classpath">
         <path refid="NuovoLauncher.classpath"/>
-        <pathelement location="libs/com.fasterxml.jackson.databind-2.10.3.LIFERAY-PATCHED-1.jar"/>
-        <pathelement location="libs/commons-io-1.3.2.jar"/>
-        <pathelement location="libs/javafx.base.jar"/>
-        <pathelement location="libs/javafx.controls.jar"/>
-        <pathelement location="libs/javafx.fxml.jar"/>
-        <pathelement location="libs/javafx.graphics.jar"/>
-        <pathelement location="libs/javafx.media.jar"/>
-        <pathelement location="libs/javafx.swing.jar"/>
-        <pathelement location="libs/javafx.web.jar"/>
-        <pathelement location="libs/javafx-swt.jar"/>
-        <pathelement location="libs/json-simple-1.1.1.jar"/>
-        <pathelement location="libs/jsoup-1.13.1.jar"/>
-        <pathelement location="libs/mysql-connector-java-8.0.22.jar"/>
+        <pathelement location="../libs/com.fasterxml.jackson.databind-2.10.3.LIFERAY-PATCHED-1.jar"/>
+        <pathelement location="../libs/commons-io-2.8.0.jar"/>
+        <pathelement location="../libs/javafx.base.jar"/>
+        <pathelement location="../libs/javafx.controls.jar"/>
+        <pathelement location="../libs/javafx.fxml.jar"/>
+        <pathelement location="../libs/javafx.graphics.jar"/>
+        <pathelement location="../libs/javafx.media.jar"/>
+        <pathelement location="../libs/javafx.swing.jar"/>
+        <pathelement location="../libs/javafx.web.jar"/>
+        <pathelement location="../libs/javafx-swt.jar"/>
+        <pathelement location="../libs/json-simple-1.1.1.jar"/>
+        <pathelement location="../libs/jsoup-1.13.1.jar"/>
+        <pathelement location="../libs/mysql-connector-java-8.0.22.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
-            <fileset dir="src">
+            <fileset dir="../src">
                 <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
@@ -89,24 +93,37 @@
     <target depends="init" name="build-project">
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
-            <src path="src"/>
+            <src path="../src"/>
             <classpath refid="NuovoLauncher.classpath"/>
         </javac>
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
     <target name="package-jar" depends="build">
-        <jar manifest="${basedir}/manifests/MANIFEST.MF" destfile="${basedir}/releases/NuovoLauncher-${TODAY}-stable.jar" >
-            <fileset dir="${basedir}/bin" includes="**/*.class" />
+        <jar manifest="../manifests/MANIFEST.MF" destfile="../releases/NuovoLauncher-${TODAY}-stable.jar" >
+            <fileset dir="bin" includes="**/*.class" />
 		</jar>
-	</target>    
+    </target>    
     <target name="NuovoLauncher - GUI">
         <java classname="com.nl.gui.NuovoLauncher" failonerror="true" fork="yes">
             <classpath refid="run.NuovoLauncher - GUI.classpath"/>
         </java>
     </target>
-    <target name="Backend Test">
-        <java classname="com.nl.gui.Play" failonerror="true" fork="yes">
-            <classpath refid="run.Backend Test.classpath"/>
+    <target name="Launcher">
+        <java classname="com.nl.launcher.Launcher" failonerror="true" fork="yes">
+            <classpath refid="run.Launcher.classpath"/>
         </java>
     </target>
     <target name="Nuovo Launcher - Minecraft Authentication">
