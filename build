@@ -20,6 +20,6 @@ if [ $? -ne 0 ]; then
 fi
 
 #push changes
-git add *
-git commit -m "[AutoBuilder] New build $(date)"
-git push -u origin master
+git add -A
+git commit -am "[AutoBuilder] New build $(date)"
+git push
