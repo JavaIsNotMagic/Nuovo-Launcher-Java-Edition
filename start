@@ -1,3 +1,3 @@
 #!/bin/bash
 
-java --module-path "./libs" --add-modules javafx.base,javafx.fxml,javafx.graphics,javafx.controls -jar "./releases/NuovoLauncher-$(date +"%m-%d-%y")-stable.jar"
+java --module-path "./libs" --add-modules javafx.base,javafx.fxml,javafx.graphics,javafx.controls -jar "./releases/NuovoLauncher-$(date +"%m-%d-%Y")-stable.jar"
