@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Merge the two sources
-cp -r /home/connor/Desktop/Development/Nuovo-Launcher-Java-Edition/src/* /home/connor/eclipse-workspace/NuovoLauncher/src 
+cp -rf /home/connor/Desktop/Development/Nuovo-Launcher-Java-Edition/src/* /home/connor/eclipse-workspace/NuovoLauncher/src 
 
 if [ $? -ne 0 ]; then
     echo "Error! Merge failed. Please see log file."; exit $?
