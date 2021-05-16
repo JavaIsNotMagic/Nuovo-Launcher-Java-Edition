@@ -1,19 +1,19 @@
 #!/bin/bash
 
 #Merge the two sources
-cp -r src/* /home/connor/eclipse-workspace/NuovoLauncher/src 1>&2> /dev/null
+cp -r src/* /home/connor/eclipse-workspace/NuovoLauncher/src 
 
 if [ $? -ne 0 ]; then
     echo "Error! Merge failed. Please see log file."; exit $?
 fi
 
-ant -buildfile ./ant/build.xml clean build 1>&2> /dev/null
+ant -buildfile ./ant/build.xml clean build 
 
 if [ $? -ne 0 ]; then
     echo "Error! Build failed"; exit $?
 fi
 
-ant -buildfile ./ant/build-final.xml create_run_jar 1>&2> /dev/null
+ant -buildfile ./ant/build-final.xml create_run_jar 
 
 if [ $? -ne 0 ]; then
     echo "Error! Build failed."; exit $?
