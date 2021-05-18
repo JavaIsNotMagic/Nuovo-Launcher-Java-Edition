@@ -21,5 +21,5 @@ fi
 
 #push changes
 git add -A 1>&2> /dev/null
-git commit -am "[AutoBuilder] New build $(date)"
+git commit -am "[AutoBuilder] New build $(date)" 1>&2> /dev/null
 git push 1>&2> /dev/null
