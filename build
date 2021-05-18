@@ -1,25 +1,25 @@
 #!/bin/bash
 
 #Merge the two sources
-cp -rf /home/connor/Desktop/Development/Nuovo-Launcher-Java-Edition/src/* /home/connor/eclipse-workspace/NuovoLauncher/src 
+cp -rf /home/connor/Desktop/Development/Nuovo-Launcher-Java-Edition/src/* /home/connor/eclipse-workspace/NuovoLauncher/src 1>&2> /dev/null
 
 if [ $? -ne 0 ]; then
     echo "Error! Merge failed. Please see log file."; exit $?
 fi
 
-ant -buildfile ./ant/build.xml clean build 
+ant -buildfile ./ant/build.xml clean build 1>&2> /dev/null
 
 if [ $? -ne 0 ]; then
     echo "Error! Build failed"; exit $?
 fi
 
-ant -buildfile ./ant/build-final.xml create_run_jar 
+ant -buildfile ./ant/build-final.xml create_run_jar 1>&2> /dev/null
 
 if [ $? -ne 0 ]; then
     echo "Error! Build failed."; exit $?
 fi
 
 #push changes
-git add -A
+git add -A 1>&2> /dev/null
 git commit -am "[AutoBuilder] New build $(date)"
-git push
+git push 1>&2> /dev/null
