@@ -27,8 +27,8 @@ public class LauncherMain {
 
         try{
           Process process = Runtime.getRuntime().exec(root);
-          //StreamGobbler sg = new StreamGobbler(process.getInputStream(), System.out::println);
-          //Executors.newSingleThreadExecutor().submit(sg);
+          StreamGobbler sg = new StreamGobbler(process.getInputStream(), System.out::println);
+          Executors.newSingleThreadExecutor().submit(sg);
           int exitCode = process.waitFor();
           assert exitCode == 0;
         } catch (Exception e) {
