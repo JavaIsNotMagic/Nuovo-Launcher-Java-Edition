@@ -24,10 +24,10 @@ public class LauncherMain {
         String uuid = (String) UUID.randomUUID().toString();
         String empty = "{}";
         String root = "java -Djava.library.path=" + natives_path + " -cp " + classpath + " net.minecraft.client.main.Main" + " --username test" + " --version " + version + " --gameDir " + game_direcotry + " --assetsDir " + assets_root + " --assetIndex " + version + " --uuid " + uuid + " --accessToken " + uuid + " --userProperties " + empty + " --userType legacy";
-           
+
         Process process = Runtime.getRuntime().exec(root);
-        StreamGobbler sg = new StreamGobbler(process.getInputStream(), System.out::println);
-        Executors.newSingleThreadExecutor().submit(sg);
+        //StreamGobbler sg = new StreamGobbler(process.getInputStream(), System.out::println);
+        //Executors.newSingleThreadExecutor().submit(sg);
         int exitCode = process.waitFor();
         assert exitCode == 0;
     }
@@ -39,9 +39,9 @@ public class LauncherMain {
         String cp = FileUtils.readFileToString(classpath);
         cp = cp.replace("\n", "").replace("\r", "");
         String empty = "{}";
-        
+
         //Issue #0001: java.io.IOException: error=7, Argument list too long.
-        //Fix: Write the command to a file, then execute 
+        //Fix: Write the command to a file, then execute
         String command = "java -Djava.library.path=" + natives_path + " -cp " + cp + " net.minecraft.client.main.Main" + " --username " + username + " --version " + version + " --gameDir " + game_direcotry + " --assetsDir " + assets_root + " --assetIndex " + version + " --uuid " + ct + " --accessToken " + at + " --userProperties " + empty + " --userType legacy";
         File command_file = new File(System.getProperty("user.dir") + "/bin/launch");
         //Set the execute permissions, and allow anyone to execute
@@ -51,7 +51,7 @@ public class LauncherMain {
         pw1.write(command);
         pw1.flush();
         pw1.close();
-        
+
         //Execute
         System.out.println("Command to execute: " + command);
         Process process = Runtime.getRuntime().exec(System.getProperty("user.dir") + "/bin/launch");
