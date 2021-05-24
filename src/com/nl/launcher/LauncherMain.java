@@ -25,11 +25,16 @@ public class LauncherMain {
         String empty = "{}";
         String root = "java -Djava.library.path=" + natives_path + " -cp " + classpath + " net.minecraft.client.main.Main" + " --username test" + " --version " + version + " --gameDir " + game_direcotry + " --assetsDir " + assets_root + " --assetIndex " + version + " --uuid " + uuid + " --accessToken " + uuid + " --userProperties " + empty + " --userType legacy";
 
-        Process process = Runtime.getRuntime().exec(root);
-        //StreamGobbler sg = new StreamGobbler(process.getInputStream(), System.out::println);
-        //Executors.newSingleThreadExecutor().submit(sg);
-        int exitCode = process.waitFor();
-        assert exitCode == 0;
+        try{
+          Process process = Runtime.getRuntime().exec(root);
+          //StreamGobbler sg = new StreamGobbler(process.getInputStream(), System.out::println);
+          //Executors.newSingleThreadExecutor().submit(sg);
+          int exitCode = process.waitFor();
+          assert exitCode == 0;
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+
     }
     public static void LaunchWithTokens(String username, String at, String ct, String version, String game_direcotry, String assets_root, String client, String path)
             throws IOException, InterruptedException {
